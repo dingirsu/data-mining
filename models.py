@@ -49,7 +49,7 @@ class KMeans:
         distances = np.linalg.norm(X[:, np.newaxis] - self.centroids, axis=2)
         return np.argmin(distances, axis=1)
 
-    def fit_prefict(self, X):
+    def fit_predict(self, X):
         self.fit(X)
         self.predict(X)
 
@@ -66,7 +66,7 @@ class DBSCAN:
 
     def find_neighbor(self, p):
         N = list() 
-        temp = np.sum((self.X-self.X.iloc[p])**2, axis=1)**0.5 
+        temp = np.sum((self.X-self.X[p])**2, axis=1)**0.5 
         N = np.argwhere(temp <= self.eps).flatten().tolist() 
         return set(N)
 

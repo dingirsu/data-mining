@@ -14,13 +14,16 @@ kmax = 10
 def train(data, args):
     kmeans = KMeans(args.clusters)
     labels = kmeans.fit_predict(data)
-    plot_clusters(data, labels, 'kmeans')
+    plot_clusters(data, labels, 'Kmeans')
 
     dbscan = DBSCAN(eps=args.eps, min_samples=args.num_samples) 
     labels = dbscan.fit_predict(data)
     plot_clusters(data, labels, 'DBSCAN')
 
     gaussmix = GaussMix(n=args.n_components)
+    labels = gaussmix.fit_predict(data)
+    plot_clusters(data, labels, 'GaussMix')
+
 
 
 
@@ -32,7 +35,6 @@ if __name__ == '__main__':
     parser.add_argument("--eps", "-e", type=float, help="the distance for DBSCAN cluster", required=True)
     parser.add_argument("--num-samples", "-n", type=int, help="min samples for a point in dbscan to be center", required=True)
     parser.add_argument("--n-components", "-nc", type=int, help="number of gaussian distribution in gauss mix", required=True)
-    parser.add_argument('--noplot', action="store_true", help='plot')
     args = parser.parse_args()
 
     data = preprocess(args.data_path)
