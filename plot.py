@@ -7,7 +7,7 @@ def plot_distance(distances):
     plt.xlabel("Points sorted by distance")
     plt.ylabel("4th Nearest Neighbor Distance")
     plt.title("k-distance Graph")
-    plt.savefig('fig/eps_dbscan.png')
+    plt.savefig('eps_dbscan.png')
 
 def plot_silhouette(sil, name):
     fig, ax = plt.subplots()
@@ -17,7 +17,7 @@ def plot_silhouette(sil, name):
     ax.plot(sil,'gx-')
     ax.set_xlabel('k')
     ax.set_ylabel('Silhouette Score')
-    plt.savefig(f'fig/{name}-silhouette.png')
+    plt.savefig(f'{name}-silhouette.png')
 
 
 def plot_clusters(X, labels, title):
@@ -27,4 +27,4 @@ def plot_clusters(X, labels, title):
     X_pca = pca.fit_transform(distance)
     ax.scatter(X_pca[:, 0], X_pca[:, 1], s=2, c=labels)
     ax.set_title(title)
-    plt.savefig(f'fig/{title}.png')
+    plt.savefig(f'{title}.png')
